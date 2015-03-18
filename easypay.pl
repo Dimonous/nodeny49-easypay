@@ -236,7 +236,6 @@ if (defined($parser->{'Check'})) {
   $dbh->do("UPDATE users SET balance='$new_balance' WHERE id='$account'");
   $reason="$payment_time;$order_id;$amount;$Payment_state_confirmed";
   $dbh->do("UPDATE pays SET reason='$reason' WHERE id='$payment_id'");
-  system("/usr/local/nodeny/web/send.py success $account $amount $order_id EasyPay >> $log_file");
   &Response($Status_ok, 'Оплачен счёт на оплату easypay. OrderID:'.$order_id, 'confirm', $current_time);
 } elsif (defined($parser->{'Cancel'})) {
 #
